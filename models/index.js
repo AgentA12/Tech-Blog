@@ -11,11 +11,19 @@ Post.hasOne(User, {
 });
 
 Post.hasMany(Comment, {
-  foreignKey: comment_id,
+  foreignKey: post_id,
 });
 
 Comment.hasOne(Post, {
-  foreignKey: comment_id,
+  foreignKey: post_id,
+});
+
+User.hasMany(Comment, {
+  foreignKey: user_id,
+});
+
+Comment.hasOne(User, {
+  foreignKey: user_id,
 });
 
 module.exports = { User, Post, Comment };
