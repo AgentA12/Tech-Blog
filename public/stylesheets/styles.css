@@ -9,7 +9,7 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
-body{
+body {
   background-color: var(--secondary-color);
 }
 
@@ -60,7 +60,7 @@ nav ul li:not(:first-child) {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: .5rem 1rem;
+  padding: 0.5rem 1rem;
   background-color: var(--primary-color);
   color: gray;
 }
@@ -69,8 +69,43 @@ nav ul li:not(:first-child) {
   font-size: 1.5rem;
 }
 
-.post-body{
+.post-body {
   padding: 1rem;
   font-size: 1.2rem;
   line-height: 1.2;
 }
+
+/* signup form styles */
+label {
+  display: block;
+}
+
+input {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: none;
+  margin-bottom: 1rem;
+}
+
+button {
+  display: block;
+  background-color: gray;
+  width: 100%;
+  padding: 0.8rem 0;
+  color: white;
+  border: none;
+  font-size: 1.4rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: lightgray;
+}
+
+a {
+  text-decoration: none;
+}
+/* signup form styles end*/
