@@ -10,9 +10,14 @@
     <header>
       <nav>
         <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">DashBoard</a></li>
-          <li><a href="#">Login</a></li>
+          <li><a href="/Home">Home</a></li>
+          <li><a href="/dashboard">DashBoard</a></li>
+          {{#unless logged_in}}
+            <li><a href="/login">Login</a></li>
+          {{/unless}}
+          {{#unless is_user}}
+            <li><a href="/signup">Signup</a></li>
+          {{/unless}}
         </ul>
         <div class="main-title-container">
           <h2>The Tech Blog</h2>
@@ -20,5 +25,6 @@
       </nav>
     </header>
     {{{body}}}
+    <script src="/javascript/signup.js"></script>
   </body>
 </html>

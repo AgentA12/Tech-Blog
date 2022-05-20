@@ -53,7 +53,7 @@ nav ul li:not(:first-child) {
 .post-container {
   margin: 5rem auto;
   width: 65vw;
-  border: var(--primary-color) solid 2px;
+  border: var(--primary-color) solid 4px;
 }
 
 .post-title {
@@ -109,3 +109,14 @@ a {
   text-decoration: none;
 }
 /* signup form styles end*/
+
+.add-post-btn {
+  width: 130px;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  bottom: 1px;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
