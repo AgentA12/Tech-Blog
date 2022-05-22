@@ -6,7 +6,7 @@ async function handleSignupForm(event) {
   console.log(userName, passWord);
 
   if (userName && passWord) {
-    const response = await fetch("/signup", {
+    const response = await fetch("/user/signup", {
       method: "post",
       body: JSON.stringify({
         userName,
@@ -16,7 +16,9 @@ async function handleSignupForm(event) {
     });
 
     if (response.ok) {
-      console.log("success!");
+      document.location.replace("/dashboard");
+    } else {
+      alert(response.statusText);
     }
   }
 }
@@ -24,6 +26,3 @@ async function handleSignupForm(event) {
 document
   .querySelector("#signup-form")
   .addEventListener("submit", handleSignupForm);
-
-
-  
