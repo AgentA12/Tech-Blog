@@ -7,8 +7,6 @@ router.get("/signup", (req, res) => {
 });
 
 router.get("/login", (req, res) => {
-  console.log(req.session);
-
   res.render("login");
 });
 
@@ -19,8 +17,17 @@ router.post("/login", (req, res) => {
       userName: req.body.userName,
     },
   }).then((dbUserData) => {
+    if (!dbUserData) {
+      res.status.json({ message: "There are no users with that user name" });
+    }
     console.log(dbUserData);
-    console.log(req.session);
+    req.session.save(() => {
+      req.session.user_id = dbUserData.id;
+      req.session.username = dbUserData.username;
+      req.session.loggedIn = true;
+      res.json(dbUserData);
+    });
+    res.render("dashboard", { loggedIn: req.session.loggedIn });
   });
 });
 

@@ -10,4 +10,4 @@ async function handleLogOut() {
   }
 }
 
-document.querySelectorAll("li").addEventListener("click", handleLogOut);
+document.querySelector("#logout").addEventListener("click", handleLogOut);
