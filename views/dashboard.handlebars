@@ -13,10 +13,15 @@
   </div>
 </div>
 
-<div class="post-btn-container">
-  <div class=""><div class="add"></div><button
-      class="add-post-btn"
-      id="add-post"
-    >Add post!</button></div>
-</div>
+{{#if loggedIn}}
+
+  {{! put  current users posts here }}
+
+  <div class="post-btn-container">
+    <div class=""><div class="add"></div><button
+        class="add-post-btn"
+        id="add-post"
+      >Add post!</button></div>
+  </div>
+{{/if}}
 <script src="/javascript/dashboard.js"></script>

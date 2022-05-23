@@ -7,9 +7,11 @@ router.get("/", (req, res) => {
       model: Post,
       attributes: ["post_body", "post_title"],
     },
+    raw: true,
   }).then((dbPostData) => {
-    const postsArray = dbPostData.map((post) => post.get({ plain: true }));
-    res.render("home", postsArray);
+    console.log(dbPostData);
+
+    res.render("home", { dbPostData, loggedIn: req.session.loggedIn });
   });
 });
 

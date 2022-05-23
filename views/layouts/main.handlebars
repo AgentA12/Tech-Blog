@@ -12,8 +12,12 @@
         <ul>
           <li><a href="/home">Home</a></li>
           <li><a href="/dashboard">DashBoard</a></li>
-          <li><a href="/login">Login</a></li>
-          <li><a href="/signup">Signup</a></li>
+          {{#if loggedIn}}
+            <li><a href="/home">logout</a></li>
+          {{else}}
+            <li><a href="/login">Login</a></li>
+            <li><a href="/signup">Signup</a></li>
+          {{/if}}
         </ul>
         <div class="main-title-container">
           <h2>The Tech Blog</h2>
@@ -21,5 +25,6 @@
       </nav>
     </header>
     {{{body}}}
+    <script src="javascript/logout.js"></script>
   </body>
 </html>

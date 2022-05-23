@@ -5,10 +5,8 @@ router.get("/", (req, res) => {
   res.render("dashboard", { loggedIn: req.session.loggedIn });
 });
 
-router.post("/", (req, res) => {
-  console.log("request recieved")
-  console.log(req.body);
-
-  res.json(req.body);
-});
+// router.post("/", (req, res) => {
+//   console.log(req.body);
+//   res.json(req.body);
+// });
 module.exports = router;

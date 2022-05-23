@@ -1,4 +1,5 @@
-async function handleSignupForm(event) {
+async function handleloginForm(event) {
+  console.log("clicked");
   event.preventDefault();
 
   const userName = document.querySelector("#username").value.trim();
@@ -6,7 +7,7 @@ async function handleSignupForm(event) {
   console.log(userName, passWord);
 
   if (userName && passWord) {
-    const response = await fetch("/signup", {
+    const response = await fetch("/login", {
       method: "post",
       body: JSON.stringify({
         userName,
@@ -25,5 +26,5 @@ async function handleSignupForm(event) {
 }
 
 document
-  .querySelector("#signup-form")
-  .addEventListener("submit", handleSignupForm);
+  .querySelector("#login-form")
+  .addEventListener("submit", handleloginForm);
