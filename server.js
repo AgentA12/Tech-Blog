@@ -19,13 +19,22 @@ const sess = {
   }),
 };
 
+
+const exphbs = require("express-handlebars");
+const helpers = require("./utils/helpers");
+
+const hbs = exphbs.create({ helpers });
+
+app.engine("handlebars", hbs.engine);
+app.set("view engine", "handlebars");
+
 app.use(session(sess));
 
 //start express-handlebars
-const { engine } = require("express-handlebars");
-const { json } = require("express/lib/response");
-app.engine("handlebars", engine());
-app.set("view engine", "handlebars");
+// const { engine } = require("express-handlebars");
+// const { json } = require("express/lib/response");
+// app.engine("handlebars", engine());
+// app.set("view engine", "handlebars");
 
 //use routers and allow static html and css from public folder
 app.use(express.json());

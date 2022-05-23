@@ -3,11 +3,14 @@
     <li>
       <div class="post-container">
         <div class="post-title">
-          <h3>{{"posts.post_title"}}</h3>
-          <p>Posted by {{username}} on {{createdAt}}</p>
+          <h3>{{post_title}}</h3>
+          <p>Posted by
+            {{"user.username"}}
+            on
+            {{"user.created_at"}}</p>
         </div>
         <div class="post-body">
-          <p>{{"posts.post_body"}}</p>
+          <p>{{post_body}}</p>
         </div>
       </div>
     </li>
