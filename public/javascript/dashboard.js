@@ -1,5 +1,6 @@
 function renderPostDiv() {
   document.querySelector("#create-post-toggler").style.display = "block";
+  document.querySelector("#dashboard-post-ul").style.display = "none";
 }
 
 async function handlePostCreate(event) {
@@ -8,7 +9,7 @@ async function handlePostCreate(event) {
   let postTitle = document.querySelector("#post-title").value.trim();
   let postContent = document.querySelector("#post-content").value.trim();
 
-  let res = await fetch("/dashboard", {
+  let response = await fetch("/dashboard", {
     method: "post",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -16,8 +17,11 @@ async function handlePostCreate(event) {
       postContent,
     }),
   });
-
-  console.log(res);
+  if (response) {
+   
+    document.querySelector("#create-post-toggler").style.display = "none";
+    document.location.replace("/dashboard");
+  }
 }
 
 document.querySelector("#add-post").addEventListener("click", renderPostDiv);

@@ -1,3 +1,25 @@
+{{#if loggedIn}}
+<ul id="dashboard-post-ul">
+  {{#each dbUserData}}
+  
+  <li>
+    <div class="user-post-container" id="user-post-list" data-post-id="{{'posts.id'}}">
+      <h3 id="dashboard-post-title">{{'posts.post_title'}}</h3>
+      <p>{{createdAt}}</p>
+    </div>
+  </li>
+  
+  {{/each}}
+</ul>
+<div class="post-btn-container">
+  <div class="">
+    <div class="add"></div><button class="add-post-btn" id="add-post">Add post!</button>
+  </div>
+</div>
+{{else}}
+{{> loginForm}}
+{{/if}}
+
 <div class="post-container" id="create-post-toggler">
   <div class="post-title">
     <h3>Create New Post</h3>
@@ -12,18 +34,5 @@
     </form>
   </div>
 </div>
-
-{{#if loggedIn}}
-
-  {{! put  current users posts here }}
-
-  <div class="post-btn-container">
-    <div class=""><div class="add"></div><button
-        class="add-post-btn"
-        id="add-post"
-      >Add post!</button></div>
-  </div>
-  {{else}}
-  {{> loginForm}}
-{{/if}}
 <script src="/javascript/dashboard.js"></script>
+<script src="/javascript/editpost.js"></script>

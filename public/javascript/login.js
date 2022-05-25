@@ -16,9 +16,17 @@ async function handleloginForm(event) {
 
     if (response.ok) {
       document.location.replace("/dashboard");
-      console.log(response);
     } else {
-      console.log(response);
+      let errorNoUsers = document.createElement("p");
+      errorNoUsers.textContent = `Error, could not find '${userName}'`;
+      errorNoUsers.style.color = "red";
+      errorNoUsers.style.marginBottom = "10px";
+      errorNoUsers.style.borderTop = "solid 1px red";
+      document.querySelector("#username").after(errorNoUsers);
+
+      document.querySelector("#username").addEventListener("focus", () => {
+        errorNoUsers.remove();
+      });
     }
   }
 }

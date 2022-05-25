@@ -11,16 +11,17 @@ router.get("/login", (req, res) => {
 });
 
 router.post("/login", (req, res) => {
-  console.log("recieved");
   User.findOne({
     where: {
       userName: req.body.userName,
     },
   }).then((dbUserData) => {
     if (!dbUserData) {
-      res.status.json({ message: "There are no users with that user name" });
+      res.status(400).json({ message: "There are no users with that user name" });
+      return;
     }
-    console.log(dbUserData);
+    // console.log(req.body.passWord);
+    //console.log(dbUserData);
     req.session.save(() => {
       req.session.user_id = dbUserData.id;
       req.session.username = dbUserData.username;
@@ -36,14 +37,12 @@ router.post("/signup", (req, res) => {
     password: req.body.passWord,
   })
     .then((dbUserData) => {
-      console.log(dbUserData);
       req.session.save(() => {
         req.session.user_id = dbUserData.id;
         req.session.username = dbUserData.username;
         req.session.loggedIn = true;
         res.json(dbUserData);
       });
-      console.log(req.session);
     })
     .catch((err) => {
       console.log(err);
@@ -52,7 +51,6 @@ router.post("/signup", (req, res) => {
 });
 
 router.post("/logout", (req, res) => {
-  console.log("sented");
   if (req.session.loggedIn) {
     req.session.destroy(() => {
       res.status(204).end();

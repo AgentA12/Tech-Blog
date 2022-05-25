@@ -3,7 +3,6 @@ async function handleSignupForm(event) {
 
   const userName = document.querySelector("#username").value.trim();
   const passWord = document.querySelector("#password").value.trim();
-  console.log(userName, passWord);
 
   if (userName && passWord) {
     const response = await fetch("/signup", {
@@ -17,9 +16,6 @@ async function handleSignupForm(event) {
 
     if (response.ok) {
       document.location.replace("/dashboard");
-      console.log(response);
-    } else {
-      console.log(response);
     }
   }
 }

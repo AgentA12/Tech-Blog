@@ -10,7 +10,10 @@ router.get("/", (req, res) => {
     },
     raw: true,
   }).then((dbPostData) => {
-    res.render("home", { dbPostData, loggedIn: req.session.loggedIn });
+    console.log(dbPostData);
+    if (!dbPostData.length) {
+      res.render("nopost");
+    } else res.render("home", { dbPostData, loggedIn: req.session.loggedIn });
   });
 });
 
