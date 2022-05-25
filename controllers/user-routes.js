@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const { compare } = require("bcrypt");
 const session = require("express-session");
 const User = require("../models/user");
 
@@ -17,11 +18,19 @@ router.post("/login", (req, res) => {
     },
   }).then((dbUserData) => {
     if (!dbUserData) {
-      res.status(400).json({ message: "There are no users with that user name" });
+      res
+        .status(400)
+        .json({ message: "There are no users with that user name" });
       return;
     }
-    // console.log(req.body.passWord);
-    //console.log(dbUserData);
+
+    const validPassword = dbUserData.checkPassword(req.body.passWord);
+
+    if (!validPassword) {
+      res.status(400).send({ IsValidPassword: validPassword });
+      return;
+    }
+
     req.session.save(() => {
       req.session.user_id = dbUserData.id;
       req.session.username = dbUserData.username;
