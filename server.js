@@ -42,3 +42,5 @@ sequelize.sync({ force: false }).then(() => {
 
 //Things a learned with problems i ran into
 //---an href on an achor tag AND document.location.replace both make a get request to the specified url endpoint---
+
+//---when seeding with sequelize, make you have individualhooks set to true. this avoids having to loop through seeded data

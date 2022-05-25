@@ -6,7 +6,7 @@ router.get("/", (req, res) => {
     attributes: ["post_body", "post_title"],
     include: {
       model: User,
-      attributes: ["username", "created_at", 'password'],
+      attributes: ["username", "created_at"],
     },
     raw: true,
   }).then((dbPostData) => {

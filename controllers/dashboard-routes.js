@@ -16,20 +16,24 @@ router.get("/", (req, res) => {
       },
       raw: true,
     }).then((dbUserData) => {
-     
       res.render("dashboard", { loggedIn: req.session.loggedIn, dbUserData });
     });
   } else res.render("dashboard", { loggedIn: req.session.loggedIn });
 });
 
 router.post("/", (req, res) => {
+  console.log(req.body);
   Post.create({
     post_title: req.body.postTitle,
     post_body: req.body.postBody,
     user_id: req.session.user_id,
-  }).then((dbUserData) => {
-    res.json(dbUserData);
-  });
+  })
+    .then((dbUserData) => {
+      res.json(dbUserData);
+    })
+    .catch((err) => {
+      res.status(400).json(err);
+    });
 });
 
 module.exports = router;
