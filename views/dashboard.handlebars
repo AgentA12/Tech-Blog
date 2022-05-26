@@ -3,11 +3,11 @@
   {{#each dbUserData}}
  
   <li>
-    <a href="/dashboard/edit/{{'posts.id'}}">
-    <div class="user-post-container" id="user-post-list" data-post-id="{{'posts.id'}}">
+    <a href="/dashboard/edit/{{'posts.id'}}" class="user-post-container" id="user-post-list" data-post-id="{{'posts.id'}}" >
+    {{!-- <div class="user-post-container" id="user-post-list" data-post-id="{{'posts.id'}}"> --}}
       <h3 id="dashboard-post-title">{{'posts.post_title'}}</h3>
       <p>{{createdAt}}</p>
-    </div>
+    {{!-- </div> --}}
     </a>
   </li>
  
@@ -37,5 +37,4 @@
   </div>
 </div>
 
-<script src="/javascript/dashboard.js"></script>
 <script src="/javascript/createpost.js"></script>
