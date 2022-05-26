@@ -1,16 +1,8 @@
 const router = require("express").Router();
 const { compare } = require("bcrypt");
-const session = require("express-session");
-const User = require("../models/user");
+const User = require("../../models/user");
 
-router.get("/signup", (req, res) => {
-  res.render("signup");
-});
-
-router.get("/login", (req, res) => {
-  res.render("login");
-});
-
+//login a signed up user
 router.post("/login", (req, res) => {
   User.findOne({
     where: {
@@ -35,11 +27,12 @@ router.post("/login", (req, res) => {
       req.session.user_id = dbUserData.id;
       req.session.username = dbUserData.username;
       req.session.loggedIn = true;
-      res.render("dashboard", { loggedIn: req.session.loggedIn });
     });
+    res.render("dashboard", { loggedIn: req.session.loggedIn });
   });
 });
 
+//create a new user
 router.post("/signup", (req, res) => {
   User.create({
     username: req.body.userName,
@@ -59,6 +52,7 @@ router.post("/signup", (req, res) => {
     });
 });
 
+//logout and destroy session
 router.post("/logout", (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
@@ -67,6 +61,14 @@ router.post("/logout", (req, res) => {
   } else {
     res.status(404).end();
   }
+});
+
+router.get("/signup", (req, res) => {
+  res.render("signup");
+});
+
+router.get("/login", (req, res) => {
+  res.render("login");
 });
 
 module.exports = router;

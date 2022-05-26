@@ -8,19 +8,19 @@ const userData = [
   },
   {
     username: "bluekitten",
-    password: "password12",
+    password: "secretpassword",
   },
   {
     username: "zeett",
-    password: "password12",
+    password: "securepassword1",
   },
   {
     username: "SPK",
-    password: "password12",
+    password: "mydogsname0",
   },
   {
     username: "whosthis",
-    password: "password12",
+    password: "myfavcolor11",
   },
 ];
 

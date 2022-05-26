@@ -1,31 +1,19 @@
-function renderPostDiv() {
-  document.querySelector("#create-post-toggler").style.display = "block";
-  document.querySelector("#dashboard-post-ul").style.display = "none";
-}
-
-async function handlePostCreate(event) {
-  event.preventDefault();
-
-  let postTitle = document.querySelector("#post-title").value.trim();
-  let postContent = document.querySelector("#post-content").value.trim();
-
-  let response = await fetch("/dashboard", {
-    method: "post",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      postTitle,
-      postContent,
-    }),
+document.querySelectorAll("#user-post-list").forEach((post) => {
+    post.addEventListener("click", handlePostEdit);
   });
-  if (response) {
-   
-    document.querySelector("#create-post-toggler").style.display = "none";
-    document.location.replace("/dashboard");
+  
+  async function handlePostEdit(e) {
+    e.preventDefault();
+    let postId = e.target.getAttribute("data-post-id");
+  
+    let res = await fetch("/editpost", {
+      method: "put",
+      body: JSON.stringify({
+        postId,
+      }),
+      headers: {
+        "Content-type": "application/json",
+      },
+    });
   }
-}
-
-document.querySelector("#add-post").addEventListener("click", renderPostDiv);
-
-document
-  .querySelector("#create-form")
-  .addEventListener("submit", handlePostCreate);
+  

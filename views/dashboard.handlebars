@@ -1,13 +1,16 @@
 {{#if loggedIn}}
 <ul id="dashboard-post-ul">
   {{#each dbUserData}}
+ 
   <li>
+    <a href="/dashboard/edit/{{'posts.id'}}">
     <div class="user-post-container" id="user-post-list" data-post-id="{{'posts.id'}}">
       <h3 id="dashboard-post-title">{{'posts.post_title'}}</h3>
       <p>{{createdAt}}</p>
     </div>
+    </a>
   </li>
-  
+ 
   {{/each}}
 </ul>
 <div class="post-btn-container">
@@ -29,10 +32,10 @@
       <input type="text" name="post-title" id="create-post-title" />
       <label for="create-post-body">Content</label>
       <input type="text" name="post-content" id="create-post-body" />
-      <button>Create</button>
+     <button>Create</button>
     </form>
   </div>
 </div>
+
 <script src="/javascript/dashboard.js"></script>
-<script src="/javascript/editpost.js"></script>
 <script src="/javascript/createpost.js"></script>
