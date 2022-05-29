@@ -9,7 +9,7 @@ const bcrypt = require("bcrypt");
 const session = require("express-session");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
-CONST PORT = 3306 || process.env.PORT
+const PORT = 3306 || process.env.PORT
 
 const sess = {
   secret: "Super secret secret",
