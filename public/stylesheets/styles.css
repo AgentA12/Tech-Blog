@@ -52,7 +52,7 @@ nav ul li:not(:first-child) {
 }
 
 .post-container {
-  margin: 5rem auto;
+  margin: 1rem auto;
   width: 65vw;
   border: var(--primary-color) solid 4px;
 }
@@ -159,4 +159,18 @@ a {
 
 .no-posts {
   font-size: 3rem;
+}
+
+.comment-container {
+  margin: 1rem auto;
+  width: 65vw;
+  border: var(--primary-color) solid 4px;
+}
+
+.vl {
+  width: 1px;
+  border-left: 3px solid var(--primary-color);
+  height: 20px;
+  text-align: center;
+  margin: 1rem auto;
 }
