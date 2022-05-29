@@ -9,7 +9,7 @@ const bcrypt = require("bcrypt");
 const session = require("express-session");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
-const PORT = 3306 || process.env.PORT
+const PORT = process.env.PORT || 3306;
 
 const sess = {
   secret: "Super secret secret",
@@ -46,4 +46,3 @@ sequelize.sync({ force: false }).then(() => {
 //---an href on an achor tag AND document.location.replace both make a get request to the specified url endpoint---
 
 //---when seeding with sequelize, make you have individualhooks set to true. this avoids having to loop through seeded data
-
