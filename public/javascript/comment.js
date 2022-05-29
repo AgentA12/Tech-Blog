@@ -31,6 +31,10 @@ posts.forEach((post) => {
           postId,
         }),
         headers: { "Content-type": "application/json" },
+      }).then((res) => {
+        if (res.ok) {
+          document.location.replace("/home");
+        }
       });
     });
     //send the comment to the comment db with the current user and the post it was made on

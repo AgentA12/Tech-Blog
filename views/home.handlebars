@@ -20,14 +20,19 @@
           </div>
           <div class="post-body">
             <p>{{comments.comment_body}}</p>
-            <p style="font-weight: 800;">Comment by {{comments.user.username}} made on {{comments.created_at}}</p>
+            <p style="font-weight: 800;">Comment by
+              {{comments.user.username}}
+              made on
+              {{comments.created_at}}</p>
           </div>
         </div>
       {{/if}}
     </li>
   {{/each}}
 </ul>
-<script
-  src="javascript/comment.js
+{{#if loggedIn}}
+  <script
+    src="javascript/comment.js
 "
-></script>
+  ></script>
+{{/if}}

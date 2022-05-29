@@ -26,12 +26,11 @@ router.get("/", (req, res) => {
     if (!dbPostData.length) {
       res.render("nopost");
     } else {
-      console.log(dbPostData[0].comments);
+      console.log(dbPostData);
       dbPostData.forEach((post) => {
         post.createdAt = format_date(post.createdAt);
         post.comments.created_at = format_date(post.comments.created_at);
       });
-
       res.render("home", { dbPostData, loggedIn: req.session.loggedIn });
     }
   });
