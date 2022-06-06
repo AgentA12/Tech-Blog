@@ -24,6 +24,9 @@
     </form>
   </div>
 
+{{#if loggedIn}}
+<script src="/javascript/editpost.js"></script>
+{{else}}
   <script src="/javascript/login.js"></script>
-  <script src="/javascript/editpost.js"></script>
+  {{/if}}
 </div>
