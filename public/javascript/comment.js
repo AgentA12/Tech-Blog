@@ -1,8 +1,10 @@
 let posts = document.querySelectorAll(".post-container");
 posts.forEach((post) => {
   post.addEventListener("click", (e) => {
+    if (document.querySelector("#add-comment")) return
     let postId = e.target.closest("[data-post-id]").dataset.postId;
     let commentBox = document.createElement("div");
+    commentBox.setAttribute("id", "add-comment");
     commentBox.classList.add("comment-container");
     let commentText = document.createElement("p");
     commentText.textContent = "Comment";
@@ -10,6 +12,7 @@ posts.forEach((post) => {
     commentInput.setAttribute("autofocus", true);
     let commentForm = document.createElement("form");
     let commentBtn = document.createElement("button");
+    commentBtn.textContent = "Submit comment";
     commentBox.append(commentText);
     commentForm.append(commentInput);
     commentForm.append(commentBtn);
@@ -33,7 +36,7 @@ posts.forEach((post) => {
         headers: { "Content-type": "application/json" },
       }).then((res) => {
         if (res.ok) {
-          document.location.replace("/home");
+          document.location.replace("/");
         }
       });
     });

@@ -24,7 +24,7 @@ router.get("/", (req, res) => {
     nest: true,
   }).then((dbPostData) => {
     if (!dbPostData.length) {
-      res.render("nopost");
+      res.render("nopost", { loggedIn: req.session.loggedIn });
     } else {
       console.log(dbPostData);
       dbPostData.forEach((post) => {
