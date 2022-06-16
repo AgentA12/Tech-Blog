@@ -1,7 +1,11 @@
 let posts = document.querySelectorAll(".post-container");
+
 posts.forEach((post) => {
   post.addEventListener("click", (e) => {
-    if (document.querySelector("#add-comment")) return
+    console.log(post);
+    let currentDiv = e.target.closest(".post-container");
+
+    if (document.querySelector("#add-comment")) return;
     let postId = e.target.closest("[data-post-id]").dataset.postId;
     let commentBox = document.createElement("div");
     commentBox.setAttribute("id", "add-comment");
@@ -19,27 +23,29 @@ posts.forEach((post) => {
     commentBox.append(commentForm);
 
     post.after(commentBox);
-
-    commentForm.addEventListener("submit", () => {
+    //save comment data
+    commentForm.addEventListener("submit", (e) => {
       e.preventDefault();
-
+      console.log(e.target);
       let comment = document.querySelector("input").value.trim();
-      console.log(comment);
-      commentForm.style.display = "none";
-      commentBox.append(comment);
-      fetch("/comments", {
-        method: "post",
-        body: JSON.stringify({
-          comment,
-          postId,
-        }),
-        headers: { "Content-type": "application/json" },
-      }).then((res) => {
-        if (res.ok) {
-          document.location.replace("/");
-        }
-      });
+
+      if (comment) {
+        commentForm.style.display = "none";
+
+        fetch("/comments", {
+          method: "post",
+          body: JSON.stringify({
+            comment,
+            postId,
+          }),
+          headers: { "Content-type": "application/json" },
+        }).then((res) => {
+          if (res.ok) {
+            console.log(res);
+            document.location.replace("/");
+          }
+        });
+      }
     });
-    //send the comment to the comment db with the current user and the post it was made on
   });
 });

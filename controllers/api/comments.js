@@ -8,7 +8,7 @@ router.post("/comments", (req, res) => {
     post_id: req.body.postId,
   })
     .then((dbCommentData) => {
-      res.json(dbCommentData);
+      res.status(200).json(dbCommentData);
     })
     .catch((err) => {
       res.status(400).json(err);

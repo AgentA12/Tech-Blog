@@ -1,5 +1,5 @@
 <ul>
-  {{#each dbPostData}}
+  {{#each posts}}
     <li>
       <div class="post-container" data-post-id="{{id}}">
         <div class="post-title">
@@ -13,19 +13,21 @@
           <p>{{post_body}}</p>
         </div>
       </div>
-      {{#if comments.comment_body}}
-        <div class="vl"></div>
-        <div class="comment-container">
-          <div class="post-title">
+      {{#if comments}}
+        {{#each comments}}
+          <div class="vl"></div>
+          <div class="comment-container">
+            <div class="post-title">
+            </div>
+            <div class="post-body">
+              <p>{{this.comment_body}}</p>
+              <p style="font-weight: 800;">Comment by
+                {{this.user.username}}
+                made on
+                {{this.createdAt}}</p>
+            </div>
           </div>
-          <div class="post-body">
-            <p>{{comments.comment_body}}</p>
-            <p style="font-weight: 800;">Comment by
-              {{comments.user.username}}
-              made on
-              {{comments.created_at}}</p>
-          </div>
-        </div>
+        {{/each}}
       {{/if}}
     </li>
   {{/each}}
