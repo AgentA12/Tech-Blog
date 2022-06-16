@@ -13,4 +13,4 @@ This app lets users make posts and comment on other posts about tech related top
 ## Usage
 
 To use this app you can visit the deployed version here
-[https://tech-news-123.herokuapp.com/](https://tech-news-123.herokuapp.com/)
+[https://sleepy-eyrie-75665.herokuapp.com/](https://sleepy-eyrie-75665.herokuapp.com/)
